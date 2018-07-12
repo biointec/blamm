@@ -1,0 +1,3 @@
+group1	sequences/fileA.fa
+group2	sequences/fileB.fa
+group1	sequences/fileC.fa
