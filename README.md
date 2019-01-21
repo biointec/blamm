@@ -33,7 +33,7 @@ cmake ..
 make
 ```
 
-The `blamm` binary file will then be present in the `blamm.X.Y.Z/build` directory.  Optinally, to install the binary system-wide:
+The `blamm` binary file will then be present in the `blamm.X.Y.Z/build` directory.  Optionally, to install the binary system-wide:
 
 ```bash
 make install
@@ -72,7 +72,7 @@ For each module, help messages can be displayed using the `-h` or `--help` flag,
 blamm dict --help
 ```
 
-By default, `blamm` uses as many threads as the operating system suggests (typically the number of CPU cores or twice that number in case the CPU has hyperthreading enabled). This may be changed using the `-t <val>` or `--numthreads <val>` option in the hist and scan modules.
+By default, `blamm` uses as many threads as the operating system suggests (typically the number of CPU cores or twice that number in case the CPU has hyper-threading enabled). This may be changed using the `-t <val>` or `--numthreads <val>` option in the hist and scan modules.
 
 ### Dictionary module
 
@@ -111,7 +111,7 @@ The `blamm hist` module generates a PWM score histogram for each motif - backgro
 ```bash
 blamm hist motifs.jaspar sequences.mf
 ```
-For each motif - background model combination, two files are generated: `hist_groupID_motifID.dat` and `hist_groupID_motifID.gnu`. The `.dat`file contains the histogram data while the `.gnu` file can be used by `gnuplot` to generated a postscript `.ps` file that can visualized by a viewer of your choise (e.g. `okular`):
+For each motif - background model combination, two files are generated: `hist_groupID_motifID.dat` and `hist_groupID_motifID.gnu`. The `.dat`file contains the histogram data while the `.gnu` file can be used by `gnuplot` to generated a postscript `.ps` file that can visualized by a viewer of your choice (e.g. `okular`):
 
 ```bash
 gnuplot hist_groupID_motifID.gnu
@@ -126,7 +126,7 @@ Alternatively, one can generate *empirical* PWM score histograms by scanning a p
 blamm hist -e -l 20000000 motifs.jaspar sequences.mf
 ```
 
-Regardless of whether the *theorertical* or *empirical* histograms are computed, the user can specify the number of bins per histogram (250 by default) using the `-b <val>` or `--numbins <val>` flag. A higher number of bins improves the accuracy when converting p-values to PWM score thresholds.
+Regardless of whether the *theoretical* or *empirical* histograms are computed, the user can specify the number of bins per histogram (250 by default) using the `-b <val>` or `--numbins <val>` flag. A higher number of bins improves the accuracy when converting p-values to PWM score thresholds.
 
 Finally, the `-H <path>` or `--histdir <path>` option can be used to provide `blamm` with a path to an existing directory where the histogram output files can be written.
 
@@ -156,6 +156,8 @@ chr1    blamm   MA0282.1        59932   59940   13.5375 +       .       .
 
 The first column refers to sequence identifier (as specified in the input fasta file). The second column will always be blamm (the tool that generated the data). The third column is the motif identifier as specified in the motifs.jaspar input file. The fourth and fifth columns are respectively the begin and end positions motif occurrence in the sequence. The sixth column is the PWM score. Finally, the seventh column is the strand ('+' for forward; '-' for reverse). Column eight and nine are not used.
 
+Note that the motif occurrences appear in unsorted order and that this order can vary between runs in case more than one thread is used. One can simply the Linux `sort` commond to efficiently sort the contents of the output file.
+
 The PWM thresholds that were used are written to `PWMthresholds.txt`. This file is formatted as follows:
 
 ```bash
@@ -164,7 +166,6 @@ group1    MA0282.1        -37.9454        10.9633 13.5375
 ```
 
 The first column refers to the group identifier (i.e., the background model). The second column contains the motif identifier. The third, fourth and firth column respectively contain the minimum, threshold and maximum PWM score.
-
 
 In case the histograms were written to a different directory, the `-H <path>` or `--histdir <path>` option should again be used to point to their correct location. Note that the histograms are only needed in case a p-value threshold is specified.
 
