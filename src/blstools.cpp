@@ -64,7 +64,7 @@ void runDictModule(int argc, char **argv)
 {
         try {
                 Dictionary dict(argc, argv);
-        } catch (runtime_error e) {
+        } catch (runtime_error& e) {
                 cerr << e.what() << endl;
                 exit(EXIT_FAILURE);
         }
@@ -74,7 +74,7 @@ void runHistModule(int argc, char **argv)
 {
         try {
                 Histogram hist(argc, argv);
-        } catch (runtime_error e) {
+        } catch (runtime_error& e) {
                 cerr << e.what() << endl;
                 exit(EXIT_FAILURE);
         }
@@ -84,7 +84,7 @@ void runBLSModule(int argc, char **argv)
 {
         try {
                 BLS bls(argc, argv);
-        } catch (runtime_error e) {
+        } catch (runtime_error& e) {
                 cerr << e.what() << endl;
                 exit(EXIT_FAILURE);
         }
@@ -94,7 +94,7 @@ void runScanModule(int argc, char **argv)
 {
         try {
                 PWMScan scan(argc, argv);
-        } catch (runtime_error e) {
+        } catch (runtime_error& e) {
                 cerr << e.what() << endl;
                 exit(EXIT_FAILURE);
         }
@@ -104,7 +104,7 @@ void runOrthoModule(int argc, char **argv)
 {
         try {
                 Ortho ortho(argc, argv);
-        } catch (runtime_error e) {
+        } catch (runtime_error& e) {
                 cerr << e.what() << endl;
                 exit(EXIT_FAILURE);
         }

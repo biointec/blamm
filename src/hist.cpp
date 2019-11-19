@@ -22,6 +22,7 @@
 #include <thread>
 #include <algorithm>
 #include <cmath>
+#include <functional>
 
 #include "hist.h"
 #include "motif.h"

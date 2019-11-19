@@ -26,6 +26,7 @@
 #include <sstream>
 #include <future>
 #include <cstring>
+#include <functional>
 
 #include "pwmscan.h"
 #include "sequence.h"
