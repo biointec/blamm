@@ -72,7 +72,7 @@ For each module, help messages can be displayed using the `-h` or `--help` flag,
 blamm dict --help
 ```
 
-By default, `blamm` uses as many threads as the operating system suggests (typically the number of CPU cores or twice that number in case the CPU has hyper-threading enabled). This may be changed using the `-t <val>` or `--numthreads <val>` option in the hist and scan modules. Many BLAS implementations however, also enable multithreading by default. For optimal performance, we strongly advise to disable multithreading *within* BLAS itself, en let `blamm` control the number of threads. For many BLAS implementations,  multithreading can be disabled by setting the appropriate environment variable, for example:
+By default, `blamm` uses as many threads as the operating system suggests (typically the number of CPU cores or twice that number in case the CPU has hyper-threading enabled). This may be changed using the `-t <val>` or `--numthreads <val>` option in the hist and scan modules. Many BLAS implementations however, also enable multithreading by default. For optimal performance, we strongly advise to disable multithreading *within* BLAS itself, and let `blamm` control the number of threads. For many BLAS implementations,  multithreading can be disabled by setting the appropriate environment variable, for example:
 
 ```bash
 export MKL_NUM_THREADS=1   # for Intel MKL
